@@ -23,5 +23,6 @@ searchHero(heroid1, (err, hero) => {
     });
   });
 });
+
 console.log('end');
 
