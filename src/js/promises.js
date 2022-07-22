@@ -35,3 +35,28 @@ export const searchHero = (id) =>{
 
   });
 }
+
+
+const promiseSlow = new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      resolve('Promise Slow'); 
+    }, 2000);
+})
+
+const promiseMedium = new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      resolve('Promise Medium'); 
+    }, 1000);
+})
+
+const promiseFast = new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      resolve('Promise Fast'); 
+    }, 500);
+})
+
+export {
+  promiseSlow,
+  promiseMedium,
+  promiseFast
+}
