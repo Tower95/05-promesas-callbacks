@@ -1,18 +1,13 @@
 'use strict';
 import './styles.css';
-import {promiseSlow, promiseMedium, promiseFast} from './js/promises.js';
+import { getHerosArr , getHeroAwait } from './js/await.js';
+console.time('await')
+getHeroAwait('cap2').then(hero => {
+  
+  console.log(hero)
+  console.timeEnd('await');
 
-
-
-
-// promiseSlow.then(console.log);
-// promiseMedium.then(console.log);
-// promiseFast.then(console.log);
-
-Promise.race([promiseFast,promiseMedium,promiseSlow])
-  .then(console.log)
-  .catch(console.error);
-
+}).catch(console.warn)
  
 
 

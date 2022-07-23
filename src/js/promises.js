@@ -25,8 +25,8 @@ export const searchHero = (id) =>{
 
     if(hero){
 
-      resolve(hero);
-      
+       setTimeout(() => resolve(hero), 1000)
+     
     }else{
 
       reject(`doesn't exist a hero with the id: ${id}`);
@@ -36,6 +36,16 @@ export const searchHero = (id) =>{
   });
 }
 
+export const searchHeroAsync = async (id) =>{
+  
+  const hero = await heros[id];
+
+  if(hero){
+    return hero;
+  }else{
+      throw Error(`There is not a hero with id: ${id}`);
+  }
+}
 
 const promiseSlow = new Promise((resolve,reject)=>{
     setTimeout(() => {
