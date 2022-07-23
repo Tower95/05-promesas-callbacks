@@ -1,6 +1,7 @@
 import { searchHero, searchHeroAsync } from "./promises";
 
 const herosIds = ['cap', 'ironMan', 'thor'];
+const herosPromises = herosIds.map(searchHero);
 
 export const getHerosArr = async () => {
 
@@ -19,25 +20,44 @@ export const getHerosArr = async () => {
   return await Promise.all(herosIds.map(searchHero));
 }
 
-export const getHeroAwait = async (id) =>{
+export const getHeroAwait = async (id) => {
 
-  try{
+  try {
 
     const hero = await searchHeroAsync(id);
-  
+
     return hero;
-    
-  }catch(err){
+
+  } catch (err) {
 
     console.log('CATCH!!!')
 
     return {
-       name: "no name",
-       power: "no power"
+      name: "no name",
+      power: "no power"
     }
 
   }
 }
 
+export const herosCyclic = async () =>{
+  console.time('HeroCyclic');
+
+  for await(const hero of herosPromises){
+    console.log(hero)
+  }
+  
+  console.timeEnd('HeroCyclic');
+  // const heros = await Promise.all(herosPromises);
+  // heros.forEach(hero => console.log(hero));
+}
+
+export const heroIfAwait = async () => {
+  if((await getHeroAwait('ironMan')).name === 'Iron Man'){
+    console.log("Is the best!!");
+  }else{
+    console.log('Naaa');
+  }
+}
 
 

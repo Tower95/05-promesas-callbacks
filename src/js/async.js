@@ -1,6 +1,6 @@
 'use strict';
 import './styles.css';
-import {searchHero, searchHeroAsync} from './js/promises.js';
+import { searchHero, searchHeroAsync } from './js/promises.js';
 
 searchHero('cap2')
   .then(console.log)
@@ -20,6 +20,6 @@ searchHeroAsync('ironMan2')
 //   .catch(console.error);
 
 
- 
+
 
 
